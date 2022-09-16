@@ -1,10 +1,4 @@
-const fs = require('fs');
-const { parse } = require("csv-parse");
-const readline = require('readline');
 
+const {searchInFile} = require('./search');
 
-fs.createReadStream("./ana.csv")
-  .pipe(parse({ delimiter: "," }))
-  .on("data", function (row) {
-    console.log(row);
-  })
+const result =searchInFile(process.argv);
