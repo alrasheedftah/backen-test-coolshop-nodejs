@@ -1,4 +1,10 @@
-var arg = process.argv;
+const fs = require('fs');
+const { parse } = require("csv-parse");
+const readline = require('readline');
 
 
-console.log(arg);
+fs.createReadStream("./ana.csv")
+  .pipe(parse({ delimiter: "," }))
+  .on("data", function (row) {
+    console.log(row);
+  })
