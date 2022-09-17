@@ -22,11 +22,16 @@ const  isCsvFile =  async (filePath)=>{
 
 
 const  fileExists = async (filePath) => {
-    if(fs.existsSync(filePath)){
-        console.log(fs.existsSync(filePath))
+  try{
+  if(fs.existsSync(filePath)){
+        // console.log(fs.existsSync(filePath))
         return true;
     }
     return false;
+  }catch(ex){
+    console.log(ex)
+    return false;
+  }
  }
 
  function validIndexColumn(columnIndex){

@@ -1,27 +1,9 @@
 const {fileExists,isCsvFile,validIndexColumn,validArgsCount} = require('./functions')
 
-const  readCsvFile = async(filePath,columnIndex,searchKey)=>{
-    let rows = "";
-    var lineReader = require('readline').createInterface({
-        input: require('fs').createReadStream(filePath)
-      });
-      lineReader.on('line', function (line) {
-        let row = line.split(",")
-        // console.log(row[args[3]],args[4])
-        if(row[columnIndex] === searchKey){
-            rows += line +"\n";
-        }
-      });
-
-      lineReader.on('close',(res)=>{
-        console.log(rows)
-      })
-  }
-
+const {readCsvFile} = require('./readfile')
 
  const searchInFile = async (args)=>{
-    console.log(args)
-    if(validArgsCount(args)){
+    if(!validArgsCount(args.length)){
         console.log("The Number Of Arguments Should Be 3 args file-path and index number and searchKey")
         return ;
     }
